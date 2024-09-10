@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 
-if os.path.exists('env.py'):
+if os.path.exists(os.path.join(BASE_DIR, 'env.py')):
     import env
 
 CLOUDINARY_STORAGE = {
