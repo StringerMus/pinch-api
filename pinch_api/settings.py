@@ -40,6 +40,10 @@ DEBUG = True
 ALLOWED_HOSTS = ['8000-stringermus-pinchapi-1r7uplz6uij.ws.codeinstitute-ide.net']
 
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-stringermus-pinchapi-1r7uplz6uij.ws.codeinstitute-ide.net',
+]
+
 # Application definition
 
 INSTALLED_APPS = [
