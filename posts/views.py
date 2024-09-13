@@ -10,6 +10,7 @@ class PostList(APIView):
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly]
 
+# GET method to retrieve list of posts
     def get(self, request):
         posts = Post.objects.all()
         serializer = PostSerializer(
@@ -17,7 +18,8 @@ class PostList(APIView):
         )
         return Response(serializer.data)
 
-    def get(self, request):
+ # POST method to create a new post
+    def post(self, request):
         serializer = PostSerializer(
             data=request.data, context={'request': request}
         )
