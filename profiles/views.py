@@ -40,7 +40,7 @@ class ProfileDetail(APIView):
         )
         return Response(serializer.data)
 
-
+    #updates profile details
     def put(self, request, pk):
         profile = self.get_object(pk)
         serializer = ProfileSerializer(
