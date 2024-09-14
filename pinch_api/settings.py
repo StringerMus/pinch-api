@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'djmoney',
     'profiles',
     'posts',
+    'comments',
 ]
 
 MIDDLEWARE = [
