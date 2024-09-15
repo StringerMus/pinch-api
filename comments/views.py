@@ -6,6 +6,7 @@ from .serializers import CommentSerializer, CommentDetailSerializer
 from pinch_api.permissions import IsOwnerOrReadOnly
 
 
+#lists and creates comments
 class CommentList(generics.ListCreateAPIView):
     serializer_class = CommentSerializer
     permission_classes = [
@@ -16,6 +17,7 @@ class CommentList(generics.ListCreateAPIView):
         serializer.save(owner=self.request.user)
 
 
+#updates and deletes comments
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = CommentDetailSerializer
