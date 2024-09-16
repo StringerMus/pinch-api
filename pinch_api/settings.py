@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'rest_framework',
     'djmoney',
+    'django_filters',
     'profiles',
     'posts',
     'comments',
