@@ -1,11 +1,15 @@
 asgiref==3.8.1
 cloudinary==1.41.0
+dj-rest-auth==6.0.0
 Django==5.1.1
+django-allauth @ git+https://github.com/pennersr/django-allauth@c031add73ccac4d2f8517037a99d56d2598377f9
 django-cloudinary-storage==0.3.0
 django-filter==24.3
 django-money==3.5.3
 djangorestframework==3.15.2
+djangorestframework-simplejwt==5.3.1
 pillow==10.4.0
 py-moneyed==3.0
+PyJWT==2.9.0
 pytz==2024.1
 sqlparse==0.5.1

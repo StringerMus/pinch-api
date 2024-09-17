@@ -27,6 +27,22 @@ CLOUDINARY_STORAGE = {
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [(
+        'rest_framework.authentication.SessionAuthentication'
+        if 'DEV' in os.environ
+        else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+    )]
+}
+
+REST_USE_JWT = True
+JWT_AUTH_SECURE = True
+JWT_AUTH_COOKIE = 'my-app-auth'
+JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
+
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'pinch_api.serializers.CurrentUserSerializer'
+}
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -58,12 +74,20 @@ INSTALLED_APPS = [
     'rest_framework',
     'djmoney',
     'django_filters',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'dj_rest_auth.registration',
     'profiles',
     'posts',
     'comments',
     'likes',
 ]
-
+SITE_ID = 1
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -72,7 +96,29 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',  # Default Django backend
+    'allauth.account.auth_backends.AuthenticationBackend',  # Allauth backend for authentication
+)
+
+# Django Allauth settings
+ACCOUNT_AUTHENTICATION_METHOD = 'username'  # Other options: 'email', 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True  # Require email during registration
+ACCOUNT_EMAIL_VERIFICATION = 'none'  # Options: 'none', 'mandatory', 'optional'
+ACCOUNT_USERNAME_REQUIRED = True  # Require username
+LOGIN_REDIRECT_URL = '/'  # Redirect after login
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'  # Redirect after logout
+ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'  # Field for username in User model
+
+# Social Account settings (for OAuth if using social logins)
+SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'  # Disable email verification for social accounts
+SOCIALACCOUNT_QUERY_EMAIL = True  # Get email from the provider
+
+# Configure sites framework
+SITE_ID = 1
 
 ROOT_URLCONF = 'pinch_api.urls'
 
