@@ -48,6 +48,7 @@ REST_USE_JWT = True
 JWT_AUTH_SECURE = True
 JWT_AUTH_COOKIE = 'my-app-auth'
 JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
+JWT_AUTH_SAMESITE = 'None'
 
 REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'pinch_api.serializers.CurrentUserSerializer'
@@ -57,12 +58,15 @@ REST_AUTH_SERIALIZERS = {
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-h-gfv+mf^++63u90m9m9a!#x$a*=of-kthu*qdi6q2ivz7rr+_'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOSTS = ['8000-stringermus-pinchapi-1r7uplz6uij.ws.codeinstitute-ide.net']
+ALLOWED_HOSTS = [
+    '8000-stringermus-pinchapi-1r7uplz6uij.ws.codeinstitute-ide.net',
+    'pinch-api.herokuapp.com'
+]
 
 
 CSRF_TRUSTED_ORIGINS = [
@@ -91,6 +95,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'dj_rest_auth.registration',
+    'corsheaders',
     'profiles',
     'posts',
     'comments',
@@ -98,6 +103,7 @@ INSTALLED_APPS = [
 ]
 SITE_ID = 1
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -128,6 +134,17 @@ SOCIALACCOUNT_QUERY_EMAIL = True  # Get email from the provider
 
 # Configure sites framework
 SITE_ID = 1
+
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get('CLIENT_ORIGIN')
+    ]
+else:
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        r"^https://.*\.gitpod\.io$",
+    ]
+
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'pinch_api.urls'
 
