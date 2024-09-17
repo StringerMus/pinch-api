@@ -20,11 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 if os.path.exists(os.path.join(BASE_DIR, 'env.py')):
     import env
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
-    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
-    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
-}
+CLOUDINARY_URL = os.environ.get('CLOUDINARY_URL')
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
@@ -65,12 +61,13 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
     '8000-stringermus-pinchapi-1r7uplz6uij.ws.codeinstitute-ide.net',
-    'pinch-api.herokuapp.com'
+    'pinch-api.herokuapp.com',
 ]
 
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-stringermus-pinchapi-1r7uplz6uij.ws.codeinstitute-ide.net',
+    'pinch-api.herokuapp.com',
 ]
 
 # Application definition
