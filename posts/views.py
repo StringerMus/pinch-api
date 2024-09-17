@@ -25,7 +25,7 @@ class PostList(generics.ListCreateAPIView):
     #change to save items?
     filterset_fields = [
         'owner__username',
-        'item_name'
+        'item_name',
         'category',
         'location',
     ]
