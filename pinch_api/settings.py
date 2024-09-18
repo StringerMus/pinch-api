@@ -61,13 +61,13 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
     '8000-stringermus-pinchapi-1r7uplz6uij.ws.codeinstitute-ide.net',
-    'pinch-api.herokuapp.com',
+    'pinch-api-f947cf5f7bdc.herokuapp.com',
 ]
 
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-stringermus-pinchapi-1r7uplz6uij.ws.codeinstitute-ide.net',
-    'https://pinch-api.herokuapp.com',
+    'pinch-api-f947cf5f7bdc.herokuapp.com',
 ]
 
 # Application definition
