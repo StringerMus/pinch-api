@@ -67,7 +67,7 @@ ALLOWED_HOSTS = [
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-stringermus-pinchapi-1r7uplz6uij.ws.codeinstitute-ide.net',
-    'pinch-api-f947cf5f7bdc.herokuapp.com',
+    'https://pinch-api-f947cf5f7bdc.herokuapp.com',
 ]
 
 # Application definition
