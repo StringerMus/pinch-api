@@ -107,22 +107,6 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
 ]
 
-#AUTHENTICATION_BACKENDS = (
-#    'django.contrib.auth.backends.ModelBackend',  # Default Django backend
-#    'allauth.account.auth_backends.AuthenticationBackend',  # Allauth backend for authentication
-#)
-
-# Django Allauth settings
-#ACCOUNT_AUTHENTICATION_METHOD = 'username'  # Other options: 'email', 'username_email'
-#ACCOUNT_USERNAME_REQUIRED = True  # Require username
-#LOGIN_REDIRECT_URL = '/'  # Redirect after login
-#ACCOUNT_LOGOUT_REDIRECT_URL = '/'  # Redirect after logout
-#ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'  # Field for username in User model
-
-# Social Account settings (for OAuth if using social logins)
-#SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'  # Disable email verification for social accounts
-#SOCIALACCOUNT_QUERY_EMAIL = True  # Get email from the provider
-
 # Configure sites framework
 SITE_ID = 1
 
@@ -133,11 +117,6 @@ if 'CLIENT_ORIGIN' in os.environ:
 if 'CLIENT_ORIGIN_DEV' in os.environ:
     extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
     CORS_ALLOWED_ORIGIN_REGEXES = [r"^https://.*\.codeinstitute-ide\.net$",]
-    #CORS_ALLOWED_ORIGIN_REGEXES = [rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",]
-#else:
-#    CORS_ALLOWED_ORIGIN_REGEXES = [
-#        r"^https://.*\.gitpod\.io$",
-#    ]
 
 CORS_ALLOW_CREDENTIALS = True
 
