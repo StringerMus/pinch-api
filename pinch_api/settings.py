@@ -63,7 +63,7 @@ DEBUG = 'DEV' in os.environ
 ALLOWED_HOSTS = [
     '8000-stringermus-pinchapi-1r7uplz6uij.ws.codeinstitute-ide.net',
     os.environ.get('ALLOWED_HOST'),
-    #'pinch-api-f947cf5f7bdc.herokuapp.com',
+    'pinch-api-f947cf5f7bdc.herokuapp.com',
 ]
 
 
@@ -72,7 +72,6 @@ CSRF_TRUSTED_ORIGINS = [
     'https://pinch-api-f947cf5f7bdc.herokuapp.com',
 ]
 
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -133,6 +132,11 @@ SOCIALACCOUNT_QUERY_EMAIL = True  # Get email from the provider
 
 # Configure sites framework
 SITE_ID = 1
+
+CORS_ALLOWED_ORIGINS = [
+    os.environ.get('CLIENT_ORIGIN'),
+    'https://3000-stringermus-pinchapp-i58ptkfpdyb.ws.codeinstitute-ide.net', # Add your dev URL here
+]
 
 if 'CLIENT_ORIGIN' in os.environ:
     CORS_ALLOWED_ORIGINS = [
