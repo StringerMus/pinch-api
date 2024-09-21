@@ -2,7 +2,7 @@ asgiref==3.8.1
 cloudinary==1.41.0
 dj-database-url==0.5.0
 dj-rest-auth==6.0.0
-Django==5.1.1
+Django==4.2
 django-allauth @ git+https://github.com/pennersr/django-allauth@c031add73ccac4d2f8517037a99d56d2598377f9
 django-cloudinary-storage==0.3.0
 django-cors-headers==4.4.0
