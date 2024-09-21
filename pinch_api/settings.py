@@ -21,7 +21,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 if os.path.exists(os.path.join(BASE_DIR, 'env.py')):
     import env
 
-CLOUDINARY_URL = os.environ.get('CLOUDINARY_URL')
+CLOUDINARY_STORAGE = {
+    'CLOUDINARY_URL' : os.environ.get('CLOUDINARY_URL')
+}
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
@@ -47,6 +49,9 @@ if 'DEV' not in os.environ:
 #JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
 #JWT_AUTH_SAMESITE = 'None'
 
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'pinch_api.serializers.CurrentUserSerializer'
+}
 #New dj-rest-auth version
 REST_AUTH = {
     'USE_JWT': True,
@@ -57,26 +62,30 @@ REST_AUTH = {
     'JWT_AUTH_SAMESITE' : 'None',
 }
 
-REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'pinch_api.serializers.CurrentUserSerializer'
-}
-
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
     '8000-stringermus-pinchapi-7qkuxc9ess6.ws.codeinstitute-ide.net',
-    os.environ.get('ALLOWED_HOST'),
+    'localhost',
     'pinch-api-f947cf5f7bdc.herokuapp.com',
 ]
-
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-stringermus-pinchapi-1r7uplz6uij.ws.codeinstitute-ide.net',
     'https://pinch-api-f947cf5f7bdc.herokuapp.com',
 ]
 
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get('CLIENT_ORIGIN')
+    ]
+if 'CLIENT_ORIGIN_DEV' in os.environ:
+    extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
+    CORS_ALLOWED_ORIGIN_REGEXES = [r"^https://.*\.codeinstitute-ide\.net$",]
+
+CORS_ALLOW_CREDENTIALS = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -114,21 +123,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware',
+    'allauth.account.middleware.AccountMiddleware', #needed?
 ]
 
-# Configure sites framework
 SITE_ID = 1
-
-if 'CLIENT_ORIGIN' in os.environ:
-    CORS_ALLOWED_ORIGINS = [
-        os.environ.get('CLIENT_ORIGIN')
-    ]
-if 'CLIENT_ORIGIN_DEV' in os.environ:
-    extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
-    CORS_ALLOWED_ORIGIN_REGEXES = [r"^https://.*\.codeinstitute-ide\.net$",]
-
-CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'pinch_api.urls'
 
@@ -154,18 +152,14 @@ WSGI_APPLICATION = 'pinch_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if 'DEV' in os.environ:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-else:
-    DATABASES = {
-        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-    }
-
+DATABASES = {
+    'default': ({
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    } if 'DEV' in os.environ else dj_database_url.parse(
+        os.environ.get('DATABASE_URL')
+    ))
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
