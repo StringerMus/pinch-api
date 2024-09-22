@@ -49,9 +49,9 @@ if 'DEV' not in os.environ:
 #JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
 #JWT_AUTH_SAMESITE = 'None'
 
-REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'pinch_api.serializers.CurrentUserSerializer'
-}
+#REST_AUTH_SERIALIZERS = {
+#    'USER_DETAILS_SERIALIZER': 'pinch_api.serializers.CurrentUserSerializer'
+#}
 #New dj-rest-auth version
 REST_AUTH = {
     'USE_JWT': True,
@@ -60,6 +60,7 @@ REST_AUTH = {
     'JWT_AUTH_REFRESH_COOKIE' : 'refresh-token',
     'JWT_AUTH_SECURE' : True,
     'JWT_AUTH_SAMESITE' : 'None',
+    'USER_DETAILS_SERIALIZER': 'pinch_api.serializers.CurrentUserSerializer',
 }
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
