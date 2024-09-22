@@ -75,6 +75,7 @@ ALLOWED_HOSTS = [
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-stringermus-pinchapi-1r7uplz6uij.ws.codeinstitute-ide.net',
     'https://pinch-api-f947cf5f7bdc.herokuapp.com',
+    'https://8000-stringermus-pinchapi-7qkuxc9ess6.ws.codeinstitute-ide.net',
 ]
 
 if 'CLIENT_ORIGIN' in os.environ:
