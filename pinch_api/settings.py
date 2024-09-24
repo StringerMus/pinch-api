@@ -93,6 +93,7 @@ CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Add this line to allow React app in development
+    "https://pinch-5e6e24dd12fc.herokuapp.com/"
 ]
 
 INSTALLED_APPS = [
