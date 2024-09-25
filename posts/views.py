@@ -44,6 +44,18 @@ class PostList(generics.ListCreateAPIView):
         'price',
     ]
 
+    def get_queryset(self):
+        queryset = super().get_queryset()  # Call the original queryset
+
+        user = self.request.user
+        liked = self.request.query_params.get('liked', None)  # Check if 'liked' parameter is present
+
+        if liked and user.is_authenticated:
+            # Filter to return only posts liked by the current user
+            queryset = queryset.filter(likes__owner=user)
+
+        return queryset
+
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
