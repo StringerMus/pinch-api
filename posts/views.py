@@ -22,9 +22,11 @@ class PostList(generics.ListCreateAPIView):
         filters.SearchFilter,
         DjangoFilterBackend,
     ]
-    #change to save items?
+    
+    #allows filtering by the profile ID
     filterset_fields = [
         'owner__username',
+        'owner__profile',
         'item_name',
         'category',
         'location',
