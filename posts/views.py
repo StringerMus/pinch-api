@@ -24,7 +24,7 @@ class PostList(generics.ListCreateAPIView):
         DjangoFilterBackend,
     ]
     
-    #allows filtering by the profile ID
+    #Allows filtering by the profile ID
     filterset_fields = [
         'owner__username',
         'owner__profile',
@@ -45,19 +45,20 @@ class PostList(generics.ListCreateAPIView):
         'price',
     ]
 
-    #like filter
+    # Like filter
     def get_queryset(self):
-        queryset = super().get_queryset()  # Call the original queryset
+        # Call the original queryset
+        queryset = super().get_queryset() 
 
         user = self.request.user
-        liked = self.request.query_params.get('liked', None)  # Check if 'liked' parameter is present
+         # Check if 'liked' parameter is present
+        liked = self.request.query_params.get('liked', None) 
 
         if liked and user.is_authenticated:
             # Filter to return only posts liked by the current user
             queryset = queryset.filter(likes__owner=user)
 
         return queryset
-    #like filter
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)

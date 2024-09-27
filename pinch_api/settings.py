@@ -15,7 +15,7 @@ import os
 import dj_database_url
 import re
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 if os.path.exists(os.path.join(BASE_DIR, 'env.py')):
@@ -43,16 +43,7 @@ if 'DEV' not in os.environ:
         'rest_framework.renderers.JSONRenderer',
     ]
 
-#REST_USE_JWT = True
-#JWT_AUTH_SECURE = True
-# JWT_AUTH_COOKIE = 'my-app-auth'
-#JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
-#JWT_AUTH_SAMESITE = 'None'
 
-#REST_AUTH_SERIALIZERS = {
-#    'USER_DETAILS_SERIALIZER': 'pinch_api.serializers.CurrentUserSerializer'
-#}
-#New dj-rest-auth version
 REST_AUTH = {
     'USE_JWT': True,
     'JWT_AUTH_HTTPONLY': False,
@@ -122,6 +113,7 @@ INSTALLED_APPS = [
     'comments',
     'likes',
 ]
+
 SITE_ID = 1
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -132,12 +124,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware', #needed?
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 SITE_ID = 1
 
+
 ROOT_URLCONF = 'pinch_api.urls'
+
 
 TEMPLATES = [
     {
@@ -155,11 +149,9 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'pinch_api.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
     'default': ({
@@ -170,8 +162,6 @@ DATABASES = {
     ))
 }
 
-# Password validation
-# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -189,9 +179,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/3.2/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -203,12 +190,8 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
