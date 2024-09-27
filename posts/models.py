@@ -31,7 +31,7 @@ class Post(models.Model):
         decimal_places=2,
         default_currency='GBP',
         default='0.00',
-        validators=[MinValueValidator(Decimal('0.01'))])
+        validators=[MinValueValidator(Decimal('0.00'))])
     location = models.CharField(max_length=255)
     contact_email = models.EmailField(max_length = 254)
     image = models.ImageField(
