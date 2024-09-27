@@ -10,6 +10,7 @@ class PostList(generics.ListCreateAPIView):
     """
     List posts or create a post if logged in
     The perform_create method associates the post with the logged in user.
+    Filter posts by 'liked' parameter to show only liked posts.
     """
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
@@ -44,6 +45,7 @@ class PostList(generics.ListCreateAPIView):
         'price',
     ]
 
+    #like filter
     def get_queryset(self):
         queryset = super().get_queryset()  # Call the original queryset
 
@@ -55,6 +57,7 @@ class PostList(generics.ListCreateAPIView):
             queryset = queryset.filter(likes__owner=user)
 
         return queryset
+    #like filter
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)

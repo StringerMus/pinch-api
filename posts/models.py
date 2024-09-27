@@ -25,8 +25,8 @@ class Post(models.Model):
     category = models.CharField(
         max_length=15, choices=CATEGORIES, default='other')
     price = MoneyField(max_digits=14, decimal_places=2, default_currency='GBP', default='0.00')
-    location = models.CharField(max_length=255, blank=True)
-    contact_email = models.EmailField(max_length = 254, blank=True)
+    location = models.CharField(max_length=255)
+    contact_email = models.EmailField(max_length = 254)
     image = models.ImageField(
         upload_to='images/', default='../default_post_iagkbz', blank=True
     )
