@@ -11,8 +11,13 @@ API allows to hold certain data and functionality for the front-end, developed o
 [Visit the deployed API here](https://pinch-api-f947cf5f7bdc.herokuapp.com/)
 [Visit the deployed website here](https://pinch-5e6e24dd12fc.herokuapp.com/)
 
-//Screen mock up?
 
+## API Objective
+* Act as a backend to the fron-end ReactJS Pinch app.
+* Hold data for users to create profiles and posts, like and comment.
+* Allow users to create profiles by registering a profile.
+* Allows signed in user to post, like posts and comment on posts.
+* Allows users, where appropriate, to perfom CRUD functionality.
 
 ## UX - User Experience
 * Strategy Plane
@@ -89,20 +94,57 @@ Login/ register page
 * Login page for existing users to login
 
 
-## Structure Plan
+## Wireframes
+On front-end readme
+
+
+## Structure Plane
 For the website to be able to fulfill its goal of creating profiles, listing and viewing items, liking and commenting on posts;
 * Profiles
 * Posts
 * Likes
 * Comments
 
-//database tables
+![Responsive Image](media/structure_pl/database_flowchart.JPG)
+
+
+## Features
+Screenshot of API page
+### Navigation
+
+### Admin Page
+
+### Profiles
+
+### Posts
+
+### Like
+
+### Comments
+
+### Pagination
+
+
+## Defensive Design
+
+### Permissions
+
+### User authentication
+
+### 404 Page
+
+
+## Future Enhancement
+
+
+## Testing
+
+
+## Deployment
 
 
 
-
-
-Credit
+## Credit
 
 Moneyfield
 https://www.tutorialspoint.com/how-to-add-a-money-field-in-django
@@ -112,3 +154,9 @@ https://stackoverflow.com/questions/1139393/what-is-the-best-django-model-field-
 
 EmailField
 https://www.geeksforgeeks.org/emailfield-django-models/
+
+### Tech used
+
+### Media
+
+### Honorable mentions
