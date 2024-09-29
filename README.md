@@ -236,8 +236,13 @@ The post appears in the post list, with all the details provided in the form and
 
 * Testing – This will be tested by submitting a like form against a post.
 
-* Result – The like has been submitted successfully. The like appears in the like listing and details with the id, created at, owner and the post the like belongs to.  
+* Result – The like has been submitted successfully. The like appears in the like listing and details with the id, created at, owner and the post the like belongs to.
 
+
+## Bugs and Fixes
+
+
+## Validator
 
 
 # Deployment

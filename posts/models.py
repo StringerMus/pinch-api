@@ -14,6 +14,7 @@ CATEGORIES = (
     ('other', 'OTHER'),
 )
 
+
 class Post(models.Model):
     """
     Post model, related to 'owner', i.e. a User instance.
@@ -33,7 +34,7 @@ class Post(models.Model):
         default='0.00',
         validators=[MinValueValidator(Decimal('0.00'))])
     location = models.CharField(max_length=255)
-    contact_email = models.EmailField(max_length = 254)
+    contact_email = models.EmailField(max_length=254)
     image = models.ImageField(
         upload_to='images/', default='../default_post_iagkbz', blank=True
     )

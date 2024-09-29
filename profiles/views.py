@@ -14,7 +14,7 @@ class ProfileList(generics.ListAPIView):
         posts_count=Count('owner__post', distinct=True)
     ).order_by('-created_at')
     serializer_class = ProfileSerializer
-    filter_backends =[
+    filter_backends = [
         filters.OrderingFilter
     ]
     ordering_fields = [

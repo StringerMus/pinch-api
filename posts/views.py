@@ -18,13 +18,13 @@ class PostList(generics.ListCreateAPIView):
         comments_count=Count('comment', distinct=True),
         likes_count=Count('likes', distinct=True)
     ).order_by('-created_at')
-    filter_backends =[
+    filter_backends = [
         filters.OrderingFilter,
         filters.SearchFilter,
         DjangoFilterBackend,
     ]
-    
-    #Allows filtering by the profile ID
+
+    # Allows filtering by the profile ID
     filterset_fields = [
         'owner__username',
         'owner__profile',
@@ -48,11 +48,11 @@ class PostList(generics.ListCreateAPIView):
     # Like filter
     def get_queryset(self):
         # Call the original queryset
-        queryset = super().get_queryset() 
+        queryset = super().get_queryset()
 
         user = self.request.user
         # Check if 'liked' parameter is present
-        liked = self.request.query_params.get('liked', None) 
+        liked = self.request.query_params.get('liked', None)
 
         if liked and user.is_authenticated:
             # Filter to return only posts liked by the current user
