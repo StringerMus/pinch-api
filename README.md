@@ -179,19 +179,28 @@ There is a form at the bottom of these pages which allows to add a comment to a 
 ![api_comments2](media/features/comments2.JPG)
 
 ## Pagination
+When the list becomes long the page additional pages are created instead of adding to a long list.
+
+![api_page](media/features/page.JPG)
 
 
 # Defensive Design
 
 ### Permissions
+Permission classes have been added to views in details and list to ensure the owners of profiles, posts, likes and comments will have edit and delete access otherwise it is read only.
 
-### User authentication
 
 ### 404 Page
-
+The 404 page not found appears on the backend if an invalid url is input or reached, however on the fron-end a customer 404 page has been created to allow users to navigate back.
 
 # Future Enhancement
+There are a couple of this I would have liked to add if there was additional time for;
 
+* Saved items - Give users the ability save items they are interested in so it can recorded as a list to refer back when needed, at the moment users can use the liked page to be able to access items they are interested in to refer back to.
+
+* Email request - Allow users to put in a request to borrow via a button on a post. This will prompt a form for requestees to fill out important information like date of pickup, number of days and contact email.
+
+* A calendar - This can show interested users the days the item is available to rent to ensure items aren't being requested whilst they are unavailable.
 
 # Testing
 
