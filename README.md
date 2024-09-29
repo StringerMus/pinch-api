@@ -8,7 +8,7 @@ It solves the problem of not having to purchase items that are expensive, only n
 
 API allows to hold certain data and functionality for the front-end, developed on ReactJS, to allow users to create and view profiles and posts listings, comments, likes, have edit and delete functions to make the service possible for users.
 
-[Visit the deployed API here](https://pinch-api-f947cf5f7bdc.herokuapp.com/)
+[Visit the deployed API here](https://pinch-api-f947cf5f7bdc.herokuapp.com/)<br/>
 [Visit the deployed website here](https://pinch-5e6e24dd12fc.herokuapp.com/)
 
 
@@ -260,32 +260,94 @@ Unable to break the line of code.
 
 
 # Deployment
+To prepare the API ready for deployment these are the following steps that were taken;
 
-### Create repository for the API on GitHub
+## Set up JWT
+### DJ_Rest_Auth
+* Install Django Rest Auth.
+* Add 'rest_framework.authtoken' and 'dj_rest_auth' in settings.py under INSTALLED_APPS. 
+* Add 'dj-rest-auth/' to the main urls.py.
 
-### Setup Workspace on Github
-#### Requirements.txt for installs
+### Migrate Database
+* Ensure the API database is up-to-date with the command 'python manage.py migrate' in the database.
+
+### Registration
+The app needs to allows to register
+* Install django all auth.
+* Add the following to the apps in settings.py under INSTALLED_APPS - 'django.contrib.sites', 'allauth', 'allauth.account', 'allauth.socialaccount', 'allauth.socialaccount.providers.facebook', 'dj_rest_auth.registration'.
+* In settings.py add 'SITE_ID = 1'
+* Add 'dj-rest-auth/registration/' to the main urls.py
+
+### JWT Tokens
+* Install 'djangorestframework-simplejwt'.
+* Set DEV = 1 in env file.
+* Add the REST_FRAMEWORK and REST_AUTH code you can see in the settings.py.
+
+### Request User details
+* Create serializers.py in pinch_api folder.
+* Create class for CurrentUserSerializer for front-end to request for profile id and profile image.
+* Run migrations to finish setting JWT for the app.
+* Update requirement.txt file.
+* Push all commits.
+
+## Heroku Deployment
+* Create a PostgreSQL from Code Institute
+* Create a new app in Heroku, giving the app a relevant unique name and the suitable region.
+* Within the Heroku settings of the created app add DATABASE_URL with the created postgres url in Config Vars.
+
+### Prepate API in IDE
+* In the IDE install dj_database_url and psycopg2 to connect the external database.
+* In settings.py file, import dj_database_url.
+* Update DATABASES in the setting.py to what it is current in the current settings for DATABASES.
+* In env.py add a new environment variable with DATABASE_URL key with the PostgreSQL value.
+* Comment out DEV environment in env to migrate the database models to the new database.
+* Install gunicorn django-cors-headers in IDE terminal and update requirements.txt.
+* Create a Procfile with the release: and web: commands inside the file and save.
+* In settings.py file update ALLOWED_HOSTS variable to include Heroku app’s URL.
+* Add corsheaders to INSTALLED_APPS and corsheaders middleware to the top of the MIDDLEWARE.
+* Set the ALLOWED_ORIGINS for CLIENT_ORIGIN, CLIENT_ORIGIN_DEV, CORS_ALLOW_CREDENTIALS and CORS_ALLOWED_ORIGINS  you can see in the settings.py.
+* Ensure the secret key is in not in settings.py but in the env.py file with a key that was not used in seytings.
+* Set the DEBUG value to be True only if the DEV environment variable exists and Comment DEV back in env.py.
+* Ensure requirements.txt file is up to date and git push code to repository.
 
 ### Heroku
-#### Create app
-#### Settings
-#### Connect Github
-#### Deploy
+* Add SECRET_KEY and CLOUDINARY_URL to Heroku APP Config Vars.
+* Within Deploy tab select Connect to GitHub, search and connect API repo and deploy branch.
 
+# Technologies Used
+### Languages
+* Python
+
+### Tools
+* Django - Framework to develop the API
+* Cloudinary - Image database
+* GitHub - Repository for the website and project board for User Stories
+* GitPod - IDE used to create API
+* Heroku - Deploy website
+* CI Database - PostgreSQL database
+* lucid.app - Create database model
+* Django Rest Auth - Handle user authentication in Django applications
+* Cors Headers - Handle permissions for web applications
+* CI Python Linter - Used to check for error is python code
 
 # Credit
 
-Moneyfield
-https://www.tutorialspoint.com/how-to-add-a-money-field-in-django
-
-Decimalfield
-https://stackoverflow.com/questions/1139393/what-is-the-best-django-model-field-to-use-to-represent-a-us-dollar-amount
-
-EmailField
-https://www.geeksforgeeks.org/emailfield-django-models/
-
-### Tech used
+* [Moneyfield](https://www.tutorialspoint.com/how-to-add-a-money-field-in-django)
+* [Decimalfield](https://stackoverflow.com/questions/1139393/what-is-the-best-django-model-field-to-use-to-represent-a-us-dollar-amount)
+* [EmailField](https://www.geeksforgeeks.org/emailfield-django-models/)
+* [Disallow Negative Values](https://stackoverflow.com/questions/12384460/allow-only-positive-decimal-numbers)
+* CI Moments walkthrough
 
 ### Media
+* CI Moments Walkthrough - Default profile picture and default image picture
+
+### Troubleshooting
+* [ChatGPT](https://openai.com/index/chatgpt/)
+* [Slack Code Institute Community](https://app.slack.com/client/T0L30B202/C026PTF46F5)
+* [Stackoverflow](https://stackoverflow.com/)
+* CI Tutor Support
 
 ### Honorable mentions
+* I would like to give my mentor Richards Wells a big thanks with all the time given to help make the project better with feedback, inspiration and helpful solutions to my problems.
+* Thanks to the Slack Community as the members who have been kind enough to help provide solutions to my queries.
+* Thanks to Code Institute Tutors who were able to provide quick solutions to the bugs I was facing while in development.
