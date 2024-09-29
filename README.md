@@ -105,14 +105,20 @@ For the website to be able to fulfill its goal of creating profiles, listing and
 * Likes
 * Comments
 
-![Responsive Image](media/structure_pl/database_flowchart.JPG)
+![db_flowchart](media/structure_pl/database_flowchart.JPG)
 
 
 ## Features
-Screenshot of API page
-### Navigation
+I have used the development browser to show and test the API functionality as the deployed API does not have the ability to demonstrate CRUD functionality as this would be for the front-end to utilise.
 
-### Admin Page
+![api_home](media/features/home.JPG)
+
+### Navigation
+Navigation around the API is performed via url input, these pages are the following below;
+
+
+
+### Admin Page - 
 
 ### Profiles
 

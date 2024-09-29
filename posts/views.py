@@ -51,7 +51,7 @@ class PostList(generics.ListCreateAPIView):
         queryset = super().get_queryset() 
 
         user = self.request.user
-         # Check if 'liked' parameter is present
+        # Check if 'liked' parameter is present
         liked = self.request.query_params.get('liked', None) 
 
         if liked and user.is_authenticated:
