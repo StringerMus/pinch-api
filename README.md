@@ -19,17 +19,17 @@ API allows to hold certain data and functionality for the front-end, developed o
 * Allows signed in user to post, like posts and comment on posts.
 * Allows users, where appropriate, to perfom CRUD functionality.
 
-## UX - User Experience
+# UX - User Experience
 * Strategy Plane
 * Scope Plane
 * Structure Plane
 * Skeleton Plane
 * Surface Plane
 
-## Strategy Plane
+# Strategy Plane
 A plan is needed to ensure the purpose of the website meets the needs of site users, the audience, and the site owner.
 
-### Target Audience
+## Target Audience
 The target audience can be a variety of people depending on the item they need but the age ranges will be;
 * 18 - 40 year olds
 
@@ -38,7 +38,7 @@ And sub-catergories;
 * Homeowners to maintain their homes where one-time purchases for DIY may be a problem
 * People planning events - Need extra tables, chairs, item/ clothing for weddings etc. 
 
-### User Stories
+## User Stories
 [Link to User Stories](https://github.com/users/StringerMus/projects/7/views/1)
 
 #### Must haves
@@ -61,35 +61,35 @@ And sub-catergories;
 * A logged in user I can like a post.
 
 
-## Scope Plane - FRONT END
+# Scope Plane - FRONT END
 I identified 5 main pages that would be needed for the website to be able to function as required;
 
-Items listings/ home page.
+#### Items listings/ home page.
 * This page will contain a list of items posted by users.
 * Users can browse all items available.
 * A search bar will be available for users to search for items based on name, catergory, location and owner.
 * A section of the page will show popular items on the site, popular by likes.
 * Logged in users can like posts.
 
-Create a listing page
+#### Create a listing page
 * A form for logged in users post a new item listing.
 * Users can fill in information item information and upload an image.
 
-Post page
+#### Post page
 * A page for each item listing for their details can be viewed.
 * Logged in users can comment and like posts.
 * Item owners can delete or edit post details.
 
-Liked page
+#### Liked page
 * Only available for logged in users.
 * The page will only show items liked by an owner.
 
-Profile page
+#### Profile page
 * Users can view profile details.
 * Amount of item listing and list of posts by profile owner.
 * Profile owners can edit their user information.
 
-Login/ register page
+#### Login/ register page
 * Sign up page for new users to register
 * Login page for existing users to login
 
@@ -98,7 +98,7 @@ Login/ register page
 On front-end readme
 
 
-## Structure Plane
+# Structure Plane
 For the website to be able to fulfill its goal of creating profiles, listing and viewing items, liking and commenting on posts;
 * Profiles
 * Posts
@@ -113,25 +113,75 @@ I have used the development browser to show and test the API functionality as th
 
 ![api_home](media/features/home.JPG)
 
-### Navigation
+
+## Navigation
 Navigation around the API is performed via url input, these pages are the following below;
 
 
+## Login/ logout
+There is login/ logout functionality, I will be logged in as admin user 'spock' for the walkthrough.
 
-### Admin Page - 
-
-### Profiles
-
-### Posts
-
-### Like
-
-### Comments
-
-### Pagination
+![api_login](media/features/login.JPG)
 
 
-## Defensive Design
+## Admin Page - /admin
+The admin page is gives superuser's/ admin backend admin access to view, create, delete data. In this case it will be pages for the profile, post, comment, and like models.
+
+The development browser stores local data, the data that will be shown in the screenshots will be the testing data and from the deployed API. 
+
+![api_admin](media/features/admin.JPG)
+
+
+## Profiles
+The profile list shows the current list of users created either as a superuser or admin. 
+
+![api_profile](media/features/profile.JPG)
+
+
+## Posts
+The post list shows all posts created by all users and the details recorded for each post including the link to the image is cloudinary, the amount of likes and comments associated with the post.
+
+It also show the number of posts and if there are next or prev pages to navigate to.
+
+![api_post](media/features/post.JPG)
+
+
+#### Detail
+It is possible to just look at idividual posts by adding the post id to the url,
+
+![api_post3](media/features/post3.JPG)
+
+
+#### Form
+There is a form at the bottom of the page to be able to post a new listing. Once this is filled and submitted, the post will appear in the post list above.
+
+![api_post2](media/features/post2.JPG)
+
+
+## Like
+The like list shows the recorded likes on the API related and which post the like is linked to via post id, the owner of the like, date created and gives each like an id.
+
+The front-end will use this to allow users to like posts which is possible by recording the like data.
+
+There is a form underneath the which allows to add likes to a post by the user.
+
+![api_like](media/features/like.JPG)
+![api_like2](media/features/like2.JPG)
+
+
+## Comments
+The comments list shows a list of comments associated to posts. A comment id is created and it records the owner, owner profile id, owner profile image, created at, updated at, post id and the comment made.
+Individual comments can also be looked at on the Comments Detail page.
+
+There is a form at the bottom of these pages which allows to add a comment to a chosen post.
+
+![api_comments](media/features/comments.JPG)
+![api_comments2](media/features/comments2.JPG)
+
+## Pagination
+
+
+# Defensive Design
 
 ### Permissions
 
@@ -140,17 +190,17 @@ Navigation around the API is performed via url input, these pages are the follow
 ### 404 Page
 
 
-## Future Enhancement
+# Future Enhancement
 
 
-## Testing
+# Testing
 
 
-## Deployment
+# Deployment
 
 
 
-## Credit
+# Credit
 
 Moneyfield
 https://www.tutorialspoint.com/how-to-add-a-money-field-in-django
