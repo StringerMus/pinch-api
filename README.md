@@ -204,6 +204,41 @@ There are a couple of this I would have liked to add if there was additional tim
 
 # Testing
 
+### Profiles
+* Expected – Create a new profile user with username and password. If image field is blank the default image is used instead.
+
+* Testing – Tested through admin access > profiles > add profile. A new user was created filling in username, password field and confirming password.
+No profile image was uploaded, the default profile image was provided instead from cloudinary.
+
+
+* Result – The user was created as expected. Sign-in was successful using the new user details, the new profile appears in the profile list with an id, the username as owner, date created and updated, the profile image and the profile detail can be viewed with the id in the url. The profiles 'name' and 'about' can be updated on post details and a profile image uploaded. Unable to edit profiles that do not belong to the user.
+
+
+### Posts
+* Expected - Create a new post by filling in the post form as the new user. Item name, location and contact email is required. Price value cannot be below ‘0’ and has to be a number value not less than 3 decimal places. If an image is not provided a default image is provided.
+
+* Testing – The post form was tested by filling in the post form, submitting the form with invalid details and then submitting with the correct details. 
+
+* Result – The post was created as expected. Does not allow blank form to be submitted, need item name, location and email address in the correct format or price field to less than 0, more than 2 decimal places and needs to be a number value. If an image is not provided a default image is provided and does not allow images larger than 2mb.
+The post appears in the post list, with all the details provided in the form and the fields can be edited in post details and the post can be deleted. Unable to edit or delete posts that do not belong to the user.
+
+
+### Comments
+* Expected – Add a comment on the selected post filling in the comment form, select a post and type the comment in content. The comment should be assigned to a post with owner details and comment details.
+
+* Testing – This has been tested by completing the form and submitting.
+
+* Result – Comment was created as expected. The comment appears on the comment list with the owner details, created/ updated information, post id and content of the comment. The comment can also be edited by the comment owner and submitted successfully and deleted. Unable to edit or delete comments that do not belong to the user.
+
+
+### Likes
+* Expected – To be able to add a like to a post. The like should record the owner of the like and the post the like belongs to.
+
+* Testing – This will be tested by submitting a like form against a post.
+
+* Result – The like has been submitted successfully. The like appears in the like listing and details with the id, created at, owner and the post the like belongs to.  
+
+
 
 # Deployment
 
