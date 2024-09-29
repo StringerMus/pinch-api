@@ -239,14 +239,38 @@ The post appears in the post list, with all the details provided in the form and
 * Result – The like has been submitted successfully. The like appears in the like listing and details with the id, created at, owner and the post the like belongs to.
 
 
-## Bugs and Fixes
+## Bugs and Fixes - NEED TO FILL
+
+- Posts, comments and likes not appearing in admin.
+    - Needed add models in admin files 
+
+- Unable to login into front end. Due to new verson of django rest auth. 
+    - need to update JWT REST_AUTH in settings.py for JWT to work for new django version. 
 
 
 ## Validator
+All code has been put through the Python Linter Validator, all code satisfies the validator apart from the code in AUTH_PASSWORD_VALIDATOR.
+
+![api_validator](media/validator/validator.JPG)
+
+
+Unable to break the line of code.
+
+![api_settings_val](media/validator/settings_val.JPG)
 
 
 # Deployment
 
+### Create repository for the API on GitHub
+
+### Setup Workspace on Github
+#### Requirements.txt for installs
+
+### Heroku
+#### Create app
+#### Settings
+#### Connect Github
+#### Deploy
 
 
 # Credit
