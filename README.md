@@ -239,6 +239,14 @@ The post appears in the post list, with all the details provided in the form and
 * Result – The like has been submitted successfully. The like appears in the like listing and details with the id, created at, owner and the post the like belongs to.
 
 
+### Pagination
+* Expected - Lists should paginate after a list exceeds 10 entries.
+
+* Testing - Create more than 10 posts to ensure the list paginates.
+
+* Result - The post lists paginates. After creating 16 posts, a second page is created containing 6 posts and page 1 containing 10 posts.
+
+
 ## Bugs and Fixes - NEED TO FILL
 
 - Posts, comments and likes not appearing in admin.
