@@ -41,11 +41,11 @@ if 'DEV' not in os.environ:
 
 REST_AUTH = {
     'USE_JWT': True,
-    'JWT_AUTH_HTTPONLY': False,
+    'JWT_AUTH_HTTPONLY': True, # Prevents JavaScript access to cookies
     'JWT_AUTH_COOKIE': 'auth-token',
     'JWT_AUTH_REFRESH_COOKIE': 'refresh-token',
-    'JWT_AUTH_SECURE': True,
-    'JWT_AUTH_SAMESITE': 'None',
+    'JWT_AUTH_SECURE': True, # Ensures cookies are sent only over HTTPS, requires HTTPS for cookies
+    'JWT_AUTH_SAMESITE': 'None', # Ensures cookies work across domains
     'USER_DETAILS_SERIALIZER': 'pinch_api.serializers.CurrentUserSerializer',
 }
 
