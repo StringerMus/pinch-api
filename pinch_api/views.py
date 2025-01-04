@@ -10,6 +10,11 @@ JWT_AUTH_SECURE = REST_AUTH['JWT_AUTH_SECURE']
 USER_DETAILS_SERIALIZER = ['pinch_api.serializers.CurrentUserSerializer']
 
 
+#Email
+from django.core.management.base import BaseCommand
+from django.core.mail import send_mail
+
+
 @api_view()
 def root_route(request):
     return Response({
@@ -39,3 +44,15 @@ def logout_route(request):
         secure=JWT_AUTH_SECURE,
     )
     return response
+
+
+#Email
+def test_email_view(request):
+    send_mail(
+        'Test Email',
+        'This is a test email from Django.',
+        'mussali.one@gmail.com',  # Replace with your "from" email
+        ['mussali.one@gmail.com'],  # Replace with a valid recipient email
+        fail_silently=False,
+    )
+    return HttpResponse('Test email sent successfully!')

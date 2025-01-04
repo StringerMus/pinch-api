@@ -17,3 +17,4 @@ py-moneyed==3.0
 PyJWT==2.9.0
 pytz==2024.1
 sqlparse==0.5.1
+sendgrid==6.9.1

@@ -16,4 +16,5 @@ urlpatterns = [
     path('', include('posts.urls')),
     path('', include('comments.urls')),
     path('', include('likes.urls')),
+    path('test-email/', views.test_email_view, name='test_email'),
 ]
