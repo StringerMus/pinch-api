@@ -11,8 +11,9 @@ USER_DETAILS_SERIALIZER = ['pinch_api.serializers.CurrentUserSerializer']
 
 
 #Email
-from django.core.management.base import BaseCommand
+from rest_framework import status
 from django.core.mail import send_mail
+from .serializers import EmailSerializer
 
 
 @api_view()
@@ -47,12 +48,28 @@ def logout_route(request):
 
 
 #Email
-def test_email_view(request):
-    send_mail(
-        'Test Email',
-        'This is a test email from Django.',
-        'mussali.one@gmail.com',  # Replace with your "from" email
-        ['mussali.one@gmail.com'],  # Replace with a valid recipient email
-        fail_silently=False,
-    )
-    return HttpResponse('Test email sent successfully!')
+class SendEmailView(APIView):
+    def post(self, request):
+        serializer = EmailSerializer(data=request.data)
+        if serializer.is_valid():
+            data = serializer.validated_data
+            try:
+                send_mail(
+                    subject=data['subject'],
+                    message=f"""
+                    You have received a new query on Pinch.
+
+                    Sender: {data['name']} ({data['email']})
+                    Listing ID: {data['listing_id']}
+                    
+                    Message:
+                    {data['message']}
+                    """,
+                    from_email=None,  # Uses DEFAULT_FROM_EMAIL from settings
+                    recipient_list=[data['to_email']],
+                    fail_silently=False,
+                )
+                return Response({"success": "Email sent successfully!"}, status=status.HTTP_200_OK)
+            except Exception as e:
+                return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

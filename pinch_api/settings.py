@@ -181,27 +181,15 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 #Email API
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'apikey'  # This is the literal string 'apikey'
-EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_API_KEY')
+EMAIL_BACKEND = 'sendgrid_backend.SendgridBackend'
+SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+SENDGRID_SANDBOX_MODE_IN_DEBUG = False # Set True for testing (emails won’t actually be sent)
+DEFAULT_FROM_EMAIL = 'Pinch Enquiry <mussali.one@gmail.com>'
+if DEBUG:  # Only use console backend during development
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'root': {
-        'handlers': ['console'],
-        'level': 'DEBUG',
-    },
-}
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 LANGUAGE_CODE = 'en-us'
