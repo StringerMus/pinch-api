@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from .views import root_route
 from .views import root_route, logout_route
-from .views import SendEmailView
+from .views import send_email_view
 
 urlpatterns = [
     path('', root_route),
