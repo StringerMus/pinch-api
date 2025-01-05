@@ -14,6 +14,7 @@ USER_DETAILS_SERIALIZER = ['pinch_api.serializers.CurrentUserSerializer']
 from rest_framework import status
 from django.core.mail import send_mail
 from .serializers import EmailSerializer
+from django.conf import settings
 
 
 @api_view()
@@ -65,7 +66,7 @@ class SendEmailView(APIView):
                     Message:
                     {data['message']}
                     """,
-                    from_email=None,  # Uses DEFAULT_FROM_EMAIL from settings
+                    from_email=settings.DEFAULT_FROM_EMAIL,
                     recipient_list=[data['to_email']],
                     fail_silently=False,
                 )

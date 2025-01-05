@@ -112,7 +112,6 @@ INSTALLED_APPS = [
     'likes',
 ]
 
-SITE_ID = 1
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -181,15 +180,14 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 #Email API
-EMAIL_BACKEND = 'sendgrid_backend.SendgridBackend'
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = 'sendgrid_backend.SendgridBackend'
+
 SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
 SENDGRID_SANDBOX_MODE_IN_DEBUG = False # Set True for testing (emails won’t actually be sent)
-DEFAULT_FROM_EMAIL = 'Pinch Enquiry <mussali.one@gmail.com>'
-if DEBUG:  # Only use console backend during development
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
 
 
 LANGUAGE_CODE = 'en-us'
