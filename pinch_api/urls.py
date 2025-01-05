@@ -17,5 +17,5 @@ urlpatterns = [
     path('', include('posts.urls')),
     path('', include('comments.urls')),
     path('', include('likes.urls')),
-    path('send-email/', SendEmailView.as_view(), name='send_email'),
+    path('send-email/', send_email_view, name='send_email'),
 ]
