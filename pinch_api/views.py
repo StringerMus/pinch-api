@@ -49,7 +49,7 @@ def logout_route(request):
 
 
 #Email
-class SendEmailView(APIView):
+class SendEmailView(api_view):
     def post(self, request):
         serializer = EmailSerializer(data=request.data)
         if serializer.is_valid():
