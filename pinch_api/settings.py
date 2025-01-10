@@ -63,6 +63,7 @@ CSRF_TRUSTED_ORIGINS = [
     'https://8000-stringermus-pinchapi-1r7uplz6uij.ws.codeinstitute-ide.net',
     'https://pinch-api-f947cf5f7bdc.herokuapp.com',
     'https://8000-stringermus-pinchapi-7qkuxc9ess6.ws.codeinstitute-ide.net',
+    'https://3000-stringermus-pinchapp-x561b2fqkno.ws.codeinstitute-ide.net/',
 ]
 
 if 'CLIENT_ORIGIN' in os.environ:
@@ -82,7 +83,8 @@ CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "https://pinch-5e6e24dd12fc.herokuapp.com"
+    "https://pinch-5e6e24dd12fc.herokuapp.com",
+    "https://3000-stringermus-pinchapp-x561b2fqkno.ws.codeinstitute-ide.net/"
 ]
 
 INSTALLED_APPS = [
@@ -185,9 +187,9 @@ if DEBUG:
 else:
     EMAIL_BACKEND = 'sendgrid_backend.SendgridBackend'
 
-SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
 SENDGRID_SANDBOX_MODE_IN_DEBUG = False # Set True for testing (emails won’t actually be sent)
-DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 
 
 LANGUAGE_CODE = 'en-us'
