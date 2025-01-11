@@ -71,6 +71,7 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://pinch-5e6e24dd12fc.herokuapp.com",
+    "https://pinch-api-f947cf5f7bdc.herokuapp.com/send-email",
 ]
 
 if 'CLIENT_ORIGIN' in os.environ:
