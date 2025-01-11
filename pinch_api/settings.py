@@ -57,6 +57,7 @@ ALLOWED_HOSTS = [
     '8000-stringermus-pinchapi-7qkuxc9ess6.ws.codeinstitute-ide.net',
     'localhost',
     'pinch-api-f947cf5f7bdc.herokuapp.com',
+    'pinch-5e6e24dd12fc.herokuapp.com',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
