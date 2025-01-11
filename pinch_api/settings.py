@@ -175,7 +175,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 #Email API
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -183,8 +182,11 @@ else:
     EMAIL_BACKEND = 'sendgrid_backend.SendgridBackend'
 
 SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
-SENDGRID_SANDBOX_MODE_IN_DEBUG = False # Set True for testing (emails won’t actually be sent)
-DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
+if not SENDGRID_API_KEY:
+    raise ValueError("SENDGRID_API_KEY is not set in the environment variables.")
+
+SENDGRID_SANDBOX_MODE_IN_DEBUG = DEBUG  # True for testing (emails won’t actually be sent in debug)
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'pinchenquiry.noreply@gmail.com')
 
 
 LANGUAGE_CODE = 'en-us'

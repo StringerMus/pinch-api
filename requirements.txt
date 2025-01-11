@@ -8,6 +8,7 @@ django-cloudinary-storage==0.3.0
 django-cors-headers==4.4.0
 django-filter==24.3
 django-money==3.5.3
+django-sendgrid-v5==1.2.4
 djangorestframework==3.15.2
 djangorestframework-simplejwt==5.3.1
 gunicorn==23.0.0
@@ -15,6 +16,8 @@ pillow==10.4.0
 psycopg2==2.9.9
 py-moneyed==3.0
 PyJWT==2.9.0
+python-http-client==3.3.7
 pytz==2024.1
-sqlparse==0.5.1
 sendgrid==6.9.1
+sqlparse==0.5.1
+starkbank-ecdsa==2.2.0
