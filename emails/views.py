@@ -4,7 +4,8 @@ from .serializers import EmailSerializer
 from django.conf import settings
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from django.http import JsonResponse
+from django.http import JsonResponse #debug
+from django.views.decorators.csrf import csrf_exempt #debug
 
 @csrf_exempt
 @api_view(['POST'])
