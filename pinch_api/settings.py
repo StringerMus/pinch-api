@@ -63,21 +63,8 @@ CSRF_TRUSTED_ORIGINS = [
     'https://8000-stringermus-pinchapi-1r7uplz6uij.ws.codeinstitute-ide.net',
     'https://pinch-api-f947cf5f7bdc.herokuapp.com',
     'https://8000-stringermus-pinchapi-7qkuxc9ess6.ws.codeinstitute-ide.net',
-    'https://3000-stringermus-pinchapp-x561b2fqkno.ws.codeinstitute-ide.net/',
+    'https://3000-stringermus-pinchapp-x561b2fqkno.ws.codeinstitute-ide.net',
 ]
-
-if 'CLIENT_ORIGIN' in os.environ:
-    CORS_ALLOWED_ORIGINS = [
-        os.environ.get('CLIENT_ORIGIN')
-    ]
-if 'CLIENT_ORIGIN_DEV' in os.environ:
-    extracted_url = re.match(
-        r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''),
-        re.IGNORECASE).group(0),
-    CORS_ALLOWED_ORIGIN_REGEXES = [
-        r"^https://.*\.codeinstitute-ide\.net$",
-        r"^http://localhost:3000$",
-    ]
 
 CORS_ALLOW_CREDENTIALS = True
 
@@ -85,6 +72,16 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://pinch-5e6e24dd12fc.herokuapp.com",
 ]
+
+if 'CLIENT_ORIGIN' in os.environ:
+    origin = os.environ.get('CLIENT_ORIGIN')
+    if origin not in CORS_ALLOWED_ORIGINS:
+        CORS_ALLOWED_ORIGINS.append(origin)
+
+if 'CLIENT_ORIGIN_DEV' in os.environ:
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        r"^https://.*\.codeinstitute-ide\.net$",
+    ]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -127,9 +124,7 @@ MIDDLEWARE = [
 
 SITE_ID = 1
 
-
 ROOT_URLCONF = 'pinch_api.urls'
-
 
 TEMPLATES = [
     {
@@ -149,7 +144,6 @@ TEMPLATES = [
 
 
 WSGI_APPLICATION = 'pinch_api.wsgi.application'
-
 
 DATABASES = {
     'default': ({
