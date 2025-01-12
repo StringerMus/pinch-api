@@ -1,7 +1,7 @@
 from dj_rest_auth.serializers import UserDetailsSerializer
 from rest_framework import serializers
 from decimal import Decimal
-
+from djmoney.models.fields import MoneyField
 
 #Email
 class EmailSerializer(serializers.Serializer):
