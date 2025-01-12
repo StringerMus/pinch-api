@@ -14,13 +14,26 @@ def send_email_view(request):
             send_mail(
                 subject=data['subject'],
                 message=f"""
-                You have received a new query on Pinch.
+
+                Hi {data['owner']},
+
+                You have received a new query on Pinch from {data['name']} - do not reply to the Pinch email.
 
                 Sender: {data['name']} ({data['email']})
+
+                Item name: {data['item_name']}
+                Cost: £{data['price']} per day
                 Listing ID: {data['listing_id']}
                 
                 Message:
                 {data['message']}
+
+                To respond to this please reply back to the senders email {data['email']}.
+
+                Kind regards,
+
+                Pinch Enquiry Team
+
                 """,
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 recipient_list=[data['to_email']],
