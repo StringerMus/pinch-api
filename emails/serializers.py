@@ -3,7 +3,6 @@ from rest_framework import serializers
 from decimal import Decimal
 from djmoney.models.fields import MoneyField
 
-#Email
 class EmailSerializer(serializers.Serializer):
     name = serializers.CharField(max_length=255)
     email = serializers.EmailField()

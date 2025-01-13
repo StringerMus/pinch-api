@@ -17,7 +17,10 @@ def send_email_view(request):
 
                 Hi {data['owner']},
 
-                You have received a new query on Pinch from {data['name']} - do not reply to the Pinch email.
+                You have received a new query on Pinch from {data['name']}.
+                
+                Do not reply to the Pinch email - please see the query details below;
+                
 
                 Sender: {data['name']} ({data['email']})
 
@@ -28,7 +31,9 @@ def send_email_view(request):
                 Message:
                 {data['message']}
 
-                To respond to this please reply back to the senders email {data['email']}.
+
+                To respond to the query please reply back to the senders email {data['email']}.
+
 
                 Kind regards,
 
