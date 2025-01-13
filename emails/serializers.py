@@ -13,7 +13,4 @@ class EmailSerializer(serializers.Serializer):
     listing_id = serializers.IntegerField()
     owner = serializers.CharField(max_length=255)
     item_name = serializers.CharField(max_length=255)
-    price = MoneyField(
-        max_digits=14,
-        decimal_places=2,
-    )
+    price = serializers.DecimalField(max_digits=10, decimal_places=2)
